@@ -132,7 +132,7 @@ function FaixaFornecedoresCarrossel() {
     '/images/gelopar.png',
     '/images/gertec.png',
     '/images/starrett.png',
-    '/images/prix.png',
+    // '/images/prix.png',
   ];
   const FAST_DURATION = 25;
   const SLOW_DURATION = 75;
@@ -180,7 +180,7 @@ function FaixaFornecedoresCarrossel() {
   return (
     <div className="w-full overflow-hidden bg-gray-200 mt-[100px] mb-20 relative">
       <motion.div
-        className="absolute left-0 top-1/2 -translate-y-1/2 flex gap-0 items-center"
+        className="flex items-center gap-8 flex-nowrap"
         style={{ x: xTranslation, width: 'max-content', willChange: 'transform' }}
         onHoverStart={() => {
           setMustFinish(true);
@@ -192,7 +192,7 @@ function FaixaFornecedoresCarrossel() {
         }}
       >
         {/* sequência 1 (medida) */}
-        <div ref={firstRef} className="flex items-center gap-8 mr-8">
+        <div ref={firstRef} className="flex items-center gap-10 mr-8">
           {fornecedores.map((item, idx) => (
             <FornecedorCard image={item} key={`seq-0-${idx}`} />
           ))}

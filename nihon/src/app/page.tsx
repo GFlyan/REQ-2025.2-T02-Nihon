@@ -21,7 +21,7 @@ export default function Home() {
       {/* Banner vermelho */}
       <div className="w-full h-[450px] relative">
         <Image
-          src="/images/Banner_site_nihon.png"
+          src="/images/Banner_site_nihon3.png"
           alt="Banner principal"
           fill
           className="object-cover" // cobre toda a área sem distorcer
@@ -30,7 +30,7 @@ export default function Home() {
       </div>
 
       {/* categorias */}
-      <div className="w-full bg-white shadow-sm  py-5 mt-5">
+      <div className="w-full bg-white  py-5 mt-10">
         <div className="flex flex-wrap items-center justify-center gap-2 text-gray-700 text-sm">
           {categories.map((category, index) => (
             <motion.div
@@ -44,7 +44,7 @@ export default function Home() {
                 {category}
               </p>
               {index !== categories.length - 1 && (
-                <span className="mx-4 text-gray-300">|</span>
+                <span className="mx-4 text-gray-600">|</span>
               )}
             </motion.div>
           ))}
@@ -52,7 +52,7 @@ export default function Home() {
       </div>
 
       {/* principais produtos */}
-      <div className="flex items-center gap-20 justify-center px-8 mt-30">
+      <div className="flex items-center gap-20 justify-center px-8 mt-15">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -112,6 +112,8 @@ export default function Home() {
           src="/images/gertec.png"
           alt="Fornecedor 4"
           className="h-8 filter grayscale"
+
+        
         />
       </div>
     </div>

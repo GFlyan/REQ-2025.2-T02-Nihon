@@ -44,4 +44,24 @@
           <loc>https://example.com/reqnfuncionais/</loc>
           <lastmod>2025-09-16</lastmod>
      </url>
+     <url>
+          <loc>https://example.com/mvp/</loc>
+          <lastmod>2025-09-16</lastmod>
+     </url>
+     <url>
+          <loc>https://example.com/ataplanning/</loc>
+          <lastmod>2025-09-16</lastmod>
+     </url>
+     <url>
+          <loc>https://example.com/ataretrospectivas/</loc>
+          <lastmod>2025-09-16</lastmod>
+     </url>
+     <url>
+          <loc>https://example.com/atadaily/</loc>
+          <lastmod>2025-09-16</lastmod>
+     </url>
+     <url>
+          <loc>https://example.com/atareview/</loc>
+          <lastmod>2025-09-16</lastmod>
+     </url>
 </urlset>

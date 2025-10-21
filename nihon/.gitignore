@@ -43,5 +43,5 @@ next-env.d.ts
 # cypress
 
 cypress/reports
-cypress/video
+cypress/videos
 cypress/screenshots

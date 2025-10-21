@@ -9,14 +9,22 @@ type NextPageProps = {
 export default function NextPage({ actualPosition, lastPosition, onClickCallback }: NextPageProps) {
     if(lastPosition === actualPosition) {
         return(
-        <div className="bg-gray-200 h-10 w-28 sm:h-12 sm:w-36 md:w-40 shadow-[2px_4px_10px_rgba(0,0,0,0.2)] rounded-full flex items-center justify-center transition-all duration-150">
-            <p className="text-[#ED3135] text-sm sm:text-base font-medium">Próxima Página</p>
+        <div className="bg-gray-200 
+        h-[30px] w-[70px] text-[8px]
+        min-[375px]:w-[75px] min-[375px]:text-[9.5px]
+        min-[390px]:w-[85px] min-[390px]:text-[11px]
+        shadow-[2px_4px_10px_rgba(0,0,0,0.2)] rounded-full flex items-center text-nowrap justify-center">
+            <p className="text-[#ED3135]">Próxima Página</p>
         </div>
     );
     } else {
         return(
-        <div onClick={onClickCallback} className="bg-[#ED3135] h-10 sm:h-12 w-28 sm:w-36 md:w-40 shadow-[2px_4px_10px_rgba(0,0,0,0.2)] rounded-full flex items-center justify-center transition-all duration-150">
-            <p className="text-white text-sm sm:text-base font-medium">Próxima Página</p>
+        <div onClick={onClickCallback} className="bg-[#ED3135] 
+        h-[30px] w-[70px] text-[8px]
+        min-[375px]:w-[75px] min-[375px]:text-[9.5px]
+        min-[390px]:w-[85px] min-[390px]:text-[11px]
+        shadow-[2px_4px_10px_rgba(0,0,0,0.2)] rounded-full text-nowrap flex items-center justify-center transition hover:scale-110 duration-150">
+            <p className="text-white">Próxima Página</p>
         </div>
     );
     }

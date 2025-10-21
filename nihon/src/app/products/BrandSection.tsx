@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import Brand from "./Brand";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
@@ -8,8 +10,24 @@ type BrandSectionProps = {
 
 export default function BrandSection({ brands }: BrandSectionProps) {
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 6;
+   const [visibleCount, setVisibleCount] = useState(3); // padrão inicial (mobile)
 
+  // Define quantos itens aparecem conforme o tamanho da tela
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width >= 1024) setVisibleCount(5); // desktop
+      else if (width >= 640) setVisibleCount(4); // tablet
+      else setVisibleCount(3); // mobile
+    };
+
+    handleResize(); // executa ao montar
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Seleciona o grupo atual
   const displayedBrands = brands.slice(startIndex, startIndex + visibleCount);
 
   const handleNext = () => {
@@ -29,29 +47,53 @@ export default function BrandSection({ brands }: BrandSectionProps) {
   const canGoRight = startIndex + visibleCount < brands.length;
 
   return (
-    <div className="bg-white w-full rounded-3xl shadow-sm px-4 py-6 sm:px-8 sm:py-8 overflow-hidden">
-      <p className="text-black text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Marcas relacionadas</p>
+    <div className="bg-white h-auto w-full rounded-3xl shadow-sm overflow-hidden">
+      <p className="text-black text-[13px] 
+      min-[375px]:text-[14.5px] 
+      min-[390px]:text-[16px] 
+      min-[405px]:text-[17.5px] 
+      min-[420px]:text-[19px]
+      px-[25px] py-[25px]">Marcas relacionadas</p>
       
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-around pb-10">
         {/* Setinha esquerda */}
         <SlArrowLeft 
           onClick={canGoLeft ? handlePrev : undefined}
-          className={`text-3xl transition ${
+          className={`pl-[15px] text-[25px] 
+            min-[375px]:pl-[15px] min-[375px]:text-[26.5px] 
+            min-[390px]:pl-[15px] min-[390px]:text-[28px] 
+            min-[405px]:pl-[15px] min-[405px]:text-[29.5px] 
+            min-[420px]:pl-[15px] min-[420px]:text-[31px]   
+            transition ${
             canGoLeft ? "text-black cursor-pointer transition hover:scale-125" : "text-gray-300"
           }`}
         />
 
-        {/* Brands */}
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-16 w-full sm:w-auto">
+        {/* container fixo e flexível */}
+        <div
+          className={`
+          flex justify-center  
+          gap-[20px] w-60 
+          min-[375px]:gap-[25px] min-[375px]:w-65
+          min-[390px]:gap-[30px] min-[390px]:w-70 
+          min-[405px]:gap-[35px] min-[405px]:w-75 
+          min-[420px]:gap-[40px] min-[420px]:w-80
+          overflow-visible   transition-all duration-300
+          `}
+          style={{
+            maxWidth: `${visibleCount * 100}px`, // cada Brand ocupa cerca de 100px (ajuste conforme o tamanho do componente Brand)
+          }}
+        >
           {displayedBrands.map((brand, index) => (
             <Brand key={startIndex + index} {...brand} />
           ))}
         </div>
+          
 
         {/* Setinha direita */}
         <SlArrowRight
           onClick={canGoRight ? handleNext : undefined}
-          className={`text-3xl transition ${
+          className={`pr-[15px] text-[25px] transition ${
             canGoRight ? "text-black cursor-pointer transition hover:scale-125" : "text-gray-300"
           }`}
         />

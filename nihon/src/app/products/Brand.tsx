@@ -4,15 +4,16 @@ export default function Brand() {
       className="
         bg-[#ED3135]
         rounded-full
-        shadow-md
+        shadow-xl
         transition-transform
         hover:scale-110
         cursor-pointer
 
-        w-16 h-16
-        sm:w-20 sm:h-20
-        md:w-24 md:h-24
-        lg:w-28 lg:h-28
+        w-[64px] h-[64px]
+        min-[375px]:w-[67px] min-[375px]:h-[67px]
+        min-[390px]:w-[70px] min-[390px]:h-[70px]
+        min-[405px]:w-[73px] min-[405px]:h-[73px] 
+        min-[420px]:w-[76px] min-[420px]:h-[76px]
       "
     ></div>
   );

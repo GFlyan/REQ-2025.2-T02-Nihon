@@ -36,8 +36,8 @@ export default function Products() {
     scrollToTop();
   };
 
-  const [amountProducts] = useState(() => random.int(0, 60)); //Teste de produtos aleatórios
-  const [amountBrands] = useState(() => random.int(0, 13)); //Teste de marcas aleatórias
+  const [amountProducts] = useState(() => random.int(48, 48)); //Teste de produtos aleatórios
+  const [amountBrands] = useState(() => random.int(11, 11)); //Teste de marcas aleatórias
   const brands = new Array(amountBrands).fill(0).map((_, i) => i + 1);
   for(let i = 0 ; i < amountBrands ; i++) {
       brands[i] = i+1;
@@ -53,19 +53,14 @@ export default function Products() {
   }, [amountProducts]);
 
   const groupedProducts: any[][] = [];
-  for (let i = 0; i < products.length; i += 3) {
-  groupedProducts.push(products.slice(i, i + 3));
-  }
-
-  const groupedGroups: any[][][] = [];
-  for (let i = 0; i < groupedProducts.length; i += 3) {
-  groupedGroups.push(groupedProducts.slice(i, i + 3));
+  for (let i = 0; i < products.length; i += 6) {
+  groupedProducts.push(products.slice(i, i + 6));
   }
 
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    const pages = Math.ceil(amountProducts / 18);
+    const pages = Math.ceil(amountProducts / 12);
     setTotalPages(pages);
   }, [amountProducts]);
 
@@ -74,23 +69,23 @@ export default function Products() {
             <SearchBar/>
             {amountBrands && amountProducts ? (
             <>  
-                <div className="py-6 px-4 sm:px-8 lg:px-20">
+                <div className="py-6 px-4 ">
                      <BrandSection brands={brands}/>
                 </div>
                 
-                <div className="px-4 sm:px-8 lg:px-20">
-                    {groupedGroups[evenID] ? 
-                        (<FirstProductSection groupedGroup={groupedGroups[evenID]} />) : 
+                <div className="px-4">
+                    {groupedProducts[evenID] ? 
+                        (<FirstProductSection products={groupedProducts[evenID]} />) : 
                     (null)}
                 </div>
 
-                <div className="py-6 sm:py-10">
+                <div className="py-6 ">
                     <Banner/>
                 </div>
                     
-                {groupedGroups[oddID] ? (
-                    <div className="px-4 sm:px-8 lg:px-20 pb-5">
-                        <SecondProductSection groupedGroup={groupedGroups[oddID]}/>
+                {groupedProducts[oddID] ? (
+                    <div className="px-4 pb-5">
+                        <SecondProductSection products={groupedProducts[oddID]}/>
                     </div>) : 
                 (null)}
 

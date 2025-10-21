@@ -1,20 +1,25 @@
 "use client";
-import GridProducts from "./GridProducts";
+import Product from "./Product";
 
 type FirstProductSectionProps = {
-  groupedGroup: any[][];
+  products: any[];
 };
 
-export default function FirstProductSection({ groupedGroup }: FirstProductSectionProps) {
+export default function FirstProductSection({ products }: FirstProductSectionProps) {
   return (
-    <section className="bg-white w-full rounded-3xl shadow-sm pb-6 sm:pb-8">
-      <h2 className="px-4 sm:px-8 lg:px-10 py-4 text-black text-lg sm:text-xl font-semibold">
-        Produtos relacionados
-      </h2>
+    <section className="bg-white w-full rounded-3xl shadow-sm py-5">
+      <p className="text-black text-[13px] 
+      min-[375px]:text-[14.5px] 
+      min-[390px]:text-[16px] 
+      min-[405px]:text-[17.5px] 
+      min-[420px]:text-[19px]
+      px-[25px] 
+      pb-[25px]">Produtos relacionados</p>
 
-      <div className="space-y-6 sm:space-y-8">
-        {groupedGroup.map((groupProducts, index) => (
-          <GridProducts key={index} groupProducts={groupProducts} />
+
+      <div className="flex flex-wrap justify-between gap-3 px-[25px]">
+        {products.map((product) => (
+          <Product key={product.id} name={product.title} />
         ))}
       </div>
     </section>

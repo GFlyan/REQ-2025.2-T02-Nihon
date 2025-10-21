@@ -8,12 +8,22 @@ export default function SearchBar() {
   const [value, setValue] = useState("");
 
   return (
-    <div className="h-14 w-full bg-[#ED3135] flex items-center justify-center px-4 sm:px-6">
-      <div className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
+    <div className="h-14 w-full bg-[#ED3135] flex items-center justify-center">
+      {/* Container relativo para posicionar a lupa */}
+      <div className="relative">
         {/* Ícone de lupa */}
         <SlMagnifier
-          className={`absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-opacity
-          ${isFocused || value ? "opacity-0" : "opacity-100"}`}
+          className={`
+            absolute left-3 top-1/2 transform -translate-y-1/2
+            text-[13px] 
+            min-[375px]:text-[14.5px] 
+            min-[390px]:text-[16px] 
+            min-[405px]:text-[17.5px] 
+            min-[420px]:text-[19px]
+            text-gray-400 transition-opacity duration-200
+            pointer-events-none
+            ${isFocused || value ? "opacity-0" : "opacity-100"}
+          `}
         />
 
         {/* Campo de pesquisa */}
@@ -25,13 +35,22 @@ export default function SearchBar() {
           onBlur={() => setIsFocused(false)}
           placeholder="Pesquisar"
           className="
-            h-10 w-full bg-white rounded-3xl
-            pl-10 pr-4
+            h-[40px] 
+            w-[200px] bg-white rounded-3xl
+            min-[375px]:h-10 
+            min-[390px]:h-10
+            min-[405px]:h-10
+            min-[420px]:h-10
             outline-none
-            text-sm sm:text-base
+            text-[13px] 
+            min-[375px]:text-[14.5px] 
+            min-[390px]:text-[16px] 
+            min-[405px]:text-[17.5px] 
+            min-[420px]:text-[19px]
             focus:ring-2 focus:ring-red-500
             placeholder:text-gray-400
             transition-all
+            pl-10 pr-4 /* Padding left maior para a lupa */
           "
         />
       </div>

@@ -13,6 +13,8 @@ export default function FirstProductSection({ products }: FirstProductSectionPro
       min-[390px]:text-[16px] 
       min-[405px]:text-[17.5px] 
       min-[420px]:text-[19px]
+      lg:text-[22px]
+      xl:text-[24px]
       px-[25px] 
       pb-[25px]">Produtos relacionados</p>
 

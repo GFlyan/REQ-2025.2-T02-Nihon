@@ -37,10 +37,10 @@ export default function SearchBar() {
           className="
             h-[40px] 
             w-[200px] bg-white rounded-3xl
-            min-[375px]:h-10 
-            min-[390px]:h-10
-            min-[405px]:h-10
-            min-[420px]:h-10
+            sm:w-[350px]
+            md:w-[500px]
+            lg:w-[600px]
+            xl:w-[700px]
             outline-none
             text-[13px] 
             min-[375px]:text-[14.5px] 

@@ -17,11 +17,11 @@ export default function ChangePage({previousPage, actualPage, lastPage, nextPage
         range[i] = i+1;
     }  
 
-      let visibleCount = 3; // padrão (>=360)
+    let visibleCount = 3; // padrão (>=360)
     if (typeof window !== "undefined") {
         const width = window.innerWidth;
-        if (width >= 1024) visibleCount = 5;
-        else if (width >= 640) visibleCount = 4;
+        if (width >= 1024) visibleCount = 6;
+        else if (width >= 640) visibleCount = 5;
     }
 
     // Calcula o intervalo de páginas visíveis ao redor da atual
@@ -35,14 +35,11 @@ export default function ChangePage({previousPage, actualPage, lastPage, nextPage
     return(
         <div className="flex gap-4">
             <PreviousPage onClickCallback={previousPage} actualPosition={actualPage}/>
-
             <div
         className="
-          flex justify-center gap-[8px]
-          w-[120px] min-[360px]:w-[120px]
-          min-[640px]:w-[160px]
-          min-[1024px]:w-[200px]
-          overflow-visible
+          flex items-center justify-center gap-[8px]
+          md:gap-[10px]
+          overflow-visible  
         "
       >
         {visiblePages.map((index) => (
@@ -53,7 +50,6 @@ export default function ChangePage({previousPage, actualPage, lastPage, nextPage
           />
         ))}
       </div>
-
             <NextPage actualPosition={actualPage} lastPosition={lastPage} onClickCallback={nextPage}/>
         </div>
     );

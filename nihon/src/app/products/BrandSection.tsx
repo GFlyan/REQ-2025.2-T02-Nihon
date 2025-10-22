@@ -17,8 +17,8 @@ export default function BrandSection({ brands }: BrandSectionProps) {
     const handleResize = () => {
       const width = window.innerWidth;
 
-      if (width >= 1024) setVisibleCount(5); // desktop
-      else if (width >= 640) setVisibleCount(4); // tablet
+      if (width >= 1024) setVisibleCount(6); // desktop
+      else if (width >= 640) setVisibleCount(5); // tablet
       else setVisibleCount(3); // mobile
     };
 
@@ -47,12 +47,14 @@ export default function BrandSection({ brands }: BrandSectionProps) {
   const canGoRight = startIndex + visibleCount < brands.length;
 
   return (
-    <div className="bg-white h-auto w-full rounded-3xl shadow-sm overflow-hidden">
+    <div className="bg-white h-auto w-full rounded-3xl shadow-sm">
       <p className="text-black text-[13px] 
       min-[375px]:text-[14.5px] 
       min-[390px]:text-[16px] 
       min-[405px]:text-[17.5px] 
       min-[420px]:text-[19px]
+      lg:text-[22px]
+      xl:text-[24px]
       px-[25px] py-[25px]">Marcas relacionadas</p>
       
       <div className="flex items-center justify-around pb-10">
@@ -60,12 +62,14 @@ export default function BrandSection({ brands }: BrandSectionProps) {
         <SlArrowLeft 
           onClick={canGoLeft ? handlePrev : undefined}
           className={`pl-[15px] text-[25px] 
-            min-[375px]:pl-[15px] min-[375px]:text-[26.5px] 
-            min-[390px]:pl-[15px] min-[390px]:text-[28px] 
-            min-[405px]:pl-[15px] min-[405px]:text-[29.5px] 
-            min-[420px]:pl-[15px] min-[420px]:text-[31px]   
+            min-[375px]:text-[26.5px] 
+            min-[390px]:text-[28px] 
+            min-[405px]:text-[29.5px] 
+            min-[420px]:text-[31px]   
+            lg:text-[35px] 
+            xl:text-[37px]
             transition ${
-            canGoLeft ? "text-black cursor-pointer transition hover:scale-125" : "text-gray-300"
+            canGoLeft ? "text-[#ED3135] cursor-pointer transition hover:scale-125" : "text-gray-300"
           }`}
         />
 
@@ -78,11 +82,12 @@ export default function BrandSection({ brands }: BrandSectionProps) {
           min-[390px]:gap-[30px] min-[390px]:w-70 
           min-[405px]:gap-[35px] min-[405px]:w-75 
           min-[420px]:gap-[40px] min-[420px]:w-80
-          overflow-visible   transition-all duration-300
+          sm:gap-[25px] sm:w-[500px] 
+          md:gap-[24px] md:w-[600px] 
+          lg:gap-[15px] lg:w-[800px]
+          xl:gap-[32px] xl:w-[1000px] 
+          overflow-visible transition-all duration-300
           `}
-          style={{
-            maxWidth: `${visibleCount * 100}px`, // cada Brand ocupa cerca de 100px (ajuste conforme o tamanho do componente Brand)
-          }}
         >
           {displayedBrands.map((brand, index) => (
             <Brand key={startIndex + index} {...brand} />
@@ -93,8 +98,16 @@ export default function BrandSection({ brands }: BrandSectionProps) {
         {/* Setinha direita */}
         <SlArrowRight
           onClick={canGoRight ? handleNext : undefined}
-          className={`pr-[15px] text-[25px] transition ${
-            canGoRight ? "text-black cursor-pointer transition hover:scale-125" : "text-gray-300"
+          className={`
+            pr-[15px] text-[25px] 
+            min-[375px]:text-[26.5px] 
+            min-[390px]:text-[28px] 
+            min-[405px]:text-[29.5px] 
+            min-[420px]:text-[31px]   
+            lg:text-[35px] 
+            xl:text-[37px]
+            transition ${
+            canGoRight ? "text-[#ED3135] cursor-pointer transition hover:scale-125" : "text-gray-300"
           }`}
         />
       </div>

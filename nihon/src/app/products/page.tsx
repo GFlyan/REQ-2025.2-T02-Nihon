@@ -26,7 +26,7 @@ export default function Products() {
     setPage(page + 1);
     setEvenID(evenID + 2);
     setOddID(oddID + 2);
-    scrollToTop();
+    scrollToTop();  
   };
 
   const previousPage = () => {
@@ -36,7 +36,7 @@ export default function Products() {
     scrollToTop();
   };
 
-  const [amountProducts] = useState(() => random.int(48, 48)); //Teste de produtos aleatórios
+  const [amountProducts] = useState(() => random.int(72, 72)); //Teste de produtos aleatórios
   const [amountBrands] = useState(() => random.int(11, 11)); //Teste de marcas aleatórias
   const brands = new Array(amountBrands).fill(0).map((_, i) => i + 1);
   for(let i = 0 ; i < amountBrands ; i++) {
@@ -69,11 +69,11 @@ export default function Products() {
             <SearchBar/>
             {amountBrands && amountProducts ? (
             <>  
-                <div className="py-6 px-4 ">
+                <div className="py-6 mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12">
                      <BrandSection brands={brands}/>
                 </div>
                 
-                <div className="px-4">
+                <div className="mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12">
                     {groupedProducts[evenID] ? 
                         (<FirstProductSection products={groupedProducts[evenID]} />) : 
                     (null)}
@@ -84,7 +84,7 @@ export default function Products() {
                 </div>
                     
                 {groupedProducts[oddID] ? (
-                    <div className="px-4 pb-5">
+                    <div className="mx-4 pb-5 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12">
                         <SecondProductSection products={groupedProducts[oddID]}/>
                     </div>) : 
                 (null)}

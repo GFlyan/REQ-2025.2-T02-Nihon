@@ -11,8 +11,10 @@ import ChangePage from "@/components/productPages/ChangePage";
 
 export default async function Page({ searchParams }: { searchParams: { productName?: string, page?: string} }) {
 
-  const productName = searchParams?.productName || null;
-  const page = Number(searchParams.page) || 1;
+  // aguarda searchParams antes de usar (resolve problema: "searchParams should be awaited")
+  const params = await (searchParams as any);
+  const productName = params?.productName ?? null;
+  const page = Number(params?.page) || 1;
   
   let products = await fetchAllProducts();
 

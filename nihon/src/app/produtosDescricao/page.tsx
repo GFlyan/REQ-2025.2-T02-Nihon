@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Gallery from "./Gallery";
 import Breadcrumb from "./Breadcrumb";
 import ProductInfo from "./ProductInfo";
@@ -22,15 +23,17 @@ export default function ProductDescriptionPage() {
   // memoiza o client
   const supabase = useMemo(() => createClient(), []);
 
+  // useSearchParams para reagir a mudanças de ?id= quando navegar via Link
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     async function loadProduct() {
       setLoading(true);
       setError(null);
 
       try {
-        // pega ?id= da URL (idproduto)
-        const params = new URLSearchParams(window.location.search);
-        const idParam = params.get("id");
+        // lê id do hook do Next.js (atualiza quando Link muda a query)
+        const idParam = searchParams?.get("id");
 
         let prodResp;
         if (idParam) {
@@ -103,8 +106,7 @@ export default function ProductDescriptionPage() {
     }
 
     loadProduct();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [supabase]);
+  }, [supabase, searchParams?.toString()]);
 
   return (
     <div className="w-full min-h-screen bg-gray-50 p-4 sm:p-6">

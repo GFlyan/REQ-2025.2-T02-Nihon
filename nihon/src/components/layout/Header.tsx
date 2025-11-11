@@ -19,8 +19,8 @@ const Header = () => {
     }
   };
 
-  const PHONE_NUMBER = "+55 (61) 99961-4440";
-  const PHONE_TEL = "tel:+5561999614440";
+  const PHONE_NUMBER = "+ 55 (61) 2107-7575";
+  const PHONE_TEL = "tel:+556121077575";
 
   const navLinks = [
     { href: "/", text: "Início" },

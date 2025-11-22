@@ -23,7 +23,7 @@ export default async function Page({ searchParams }: { searchParams: { productNa
                 <div className="pt-5">
                     <SearchBar/>
                 </div>
-                <div className="pt-10 flex flex-col gap-10">
+                <div className="py-10 flex flex-col gap-10">
                     {products.map((product) => (
                         <Product key={product.idproduto} title={product.nome} idfornecedor={product.idfornecedor} status={product.status}/>
                     ))}

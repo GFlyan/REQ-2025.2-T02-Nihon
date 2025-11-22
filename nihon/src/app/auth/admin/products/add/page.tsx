@@ -1,4 +1,6 @@
 import { ReturnProduct } from "@/components/adminPages/ProductButtons";
+import MultiSelect from "@/components/adminPages/MultipleSelect";
+import ImageUploader from "@/components/adminPages/ImageUploader";
 
 export default function Page() {
     return(
@@ -9,41 +11,40 @@ export default function Page() {
                     <ReturnProduct/>
                 </div>
             </div>
-            <div className="h-px w-full bg-gray-300 mt-10"/>
+            <div className="min-h-px w-full bg-gray-300 mt-10"> {/*Essa div n aparece pq*/}</div>
             <div className="h-dvh max-w-full border border-gray-300 m-15 rounded-3xl text-black flex">
                 <div className="w-full p-10 flex flex-col justify-center">
                     <div className="flex flex-col">
                         <h1>Nome do Produto</h1>
-                        <textarea name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
+                        <input name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
                     </div>
                     <div>
                         <h1>Tipo</h1>
-                        <textarea name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
+                        <input name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <div>
+                    <div className="flex items-center justify-between gap-1">
+                        <div className="w-full">
                             <h1>Marca</h1>
-                            <textarea name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
+                            <select name="" id="" className=" h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"> 
+                                  <option value="">Opção 1</option>
+                                  <option value="">Opção 2</option>
+                            </select>
                         </div>
-                        <div>
+                        <div className="w-full">
                             <h1>Verticais</h1>
-                            <textarea name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
+                            <MultiSelect/>
                         </div>
                     </div>
-                    <div className="flex flex-col"> 
-                        <h1>Características</h1>
-                        <textarea name="" id="" className="h-10 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"/>
-                    </div>
-                    <div></div>
+ 
                     <div>
                         <h1>Descrição</h1>
-                        <textarea name="" id="" className="h-40 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"></textarea>
+                        <textarea name="" id="" className="h-40 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5 resize-none"/>
                     </div>
                 </div>
-                <div className="w-full p-10 flex flex-col justify-between">
+                <div className="w-full p-10 flex flex-col justify-center gap-5  ">
                     <div>
                         <h1>Imagens</h1>
-                        <textarea name="" id="" className="h-72 w-full border border-gray-300 focus:outline-none rounded-3xl px-5 py-1.5"></textarea>
+                        <ImageUploader/>
                     </div>
                     <div className="flex justify-end">
                         <button className="bg-[#ED3135] h-14 w-40 text-[20px] text-white rounded-2xl transition hover:scale-105 cursor-pointer">+ Adicionar</button>

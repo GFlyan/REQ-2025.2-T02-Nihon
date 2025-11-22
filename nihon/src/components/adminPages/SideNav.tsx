@@ -1,12 +1,12 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { supabaseUser } from "@/lib/supabase/client";
 import NavLink from "./NavLinks";
 
 export default function SideNav(props: any) {
   const router = useRouter();
-  const supabase = useMemo(() => createClient(), []);
+  const supabase = useMemo(() => supabaseUser(), []);
 
   const [signingOut, setSigningOut] = useState(false);
 
@@ -28,6 +28,9 @@ export default function SideNav(props: any) {
       <div className="flex flex-col gap-5">
         <NavLink />
       </div>
+
+
+      {/*Refatorar com botao da react-icons*/}
       {/* botão de logout fixado ao final do menu lateral */}
       <div className="mt-auto px-4 py-4">
         <button
@@ -57,6 +60,7 @@ export default function SideNav(props: any) {
           <span>{signingOut ? "Saindo..." : "Logout"}</span>
         </button>
       </div>
+
     </div>
   );
 }

@@ -24,17 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body>
-        {/* Header fixo */}
-        <Header />
-
-        {/* Conteúdo rolável */}
         <main className="bg-white">
           {children}
         </main>
-
-        {/* Footer */}
-        <Footer />
-        <ScrollToTopButton />
       </body>
     </html>
   );

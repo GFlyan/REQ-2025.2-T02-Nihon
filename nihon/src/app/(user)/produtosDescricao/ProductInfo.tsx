@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaPhoneAlt, FaArrowLeft } from "react-icons/fa";
-import { createClient } from "@/lib/supabase/client";
+import { supabaseUser } from "@/lib/supabase/client";
 
 export default function ProductInfo({ product, loading }: { product: any, loading: boolean }) {
-  const supabase = useMemo(() => createClient(), []);
+  const supabase = useMemo(() => supabaseUser(), []);
   const router = useRouter();
   const [fornecedorNome, setFornecedorNome] = useState<string | null>(null);
 

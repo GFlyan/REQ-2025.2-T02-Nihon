@@ -1,16 +1,15 @@
-import { kMaxLength } from 'buffer';
-import { createClient } from './client';
+import { supabaseUser } from './client';
 
-const supabase = createClient();
+const supabase = supabaseUser();
 
 export const fetchAllProducts = async () => {
-    const {data: products, error} = await supabase.from('produto').select('*');
+    const {data: products, error} = await supabase.from('produto').select('*').eq('status', true);
     if (error) throw error;
     return products;
 }
 
 export const fetchProductsByCategory = async (name: string) => {
-    const { data: idCategory, error: categoryError } = await supabase.from('categoria').select('idcategoria').eq('nome', name);
+    const { data: idCategory, error: categoryError } = await supabase.from('categoria').select('idcategoria').eq('nome', name).eq('status', true);
     if(categoryError) throw categoryError;
 
     const { data: idProducts, error: idProductsError } = await supabase.from('produtos_categorias').select('idproduto').eq('idcategoria', idCategory?.[0].idcategoria);

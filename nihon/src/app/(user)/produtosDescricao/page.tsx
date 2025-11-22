@@ -5,7 +5,7 @@ import Gallery from "./Gallery";
 import Breadcrumb from "./Breadcrumb";
 import ProductInfo from "./ProductInfo";
 import SimilarProducts from "./SimilarProducts";
-import { createClient } from "@/lib/supabase/client";
+import { supabaseUser } from "@/lib/supabase/client";
 
 export default function ProductDescriptionPage() {
   const defaultImages = [
@@ -21,7 +21,7 @@ export default function ProductDescriptionPage() {
   const [error, setError] = useState<string | null>(null);
 
   // memoiza o client
-  const supabase = useMemo(() => createClient(), []);
+  const supabase = useMemo(() => supabaseUser(), []);
 
   // useSearchParams para reagir a mudanças de ?id= quando navegar via Link
   const searchParams = useSearchParams();

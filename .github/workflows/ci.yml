@@ -9,29 +9,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. Instala o Node.js
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 2. Instala as dependências
+      # CORREÇÃO: Entra na pasta 'nihon' para instalar
       - name: Install Dependencies
+        working-directory: nihon
         run: npm ci
 
-      # 3. Roda o Cypress (Action Oficial)
+      # CORREÇÃO: Avisa a Action do Cypress que o projeto está na pasta 'nihon'
       - name: Cypress Run
         uses: cypress-io/github-action@v6
         with:
-          # Comando para iniciar o servidor antes dos testes
+          working-directory: nihon
           start: npm run dev
-          # Espera o servidor responder nesta URL antes de começar
           wait-on: 'http://localhost:3000'
-          # Tempo máximo para esperar o servidor ligar (em segundos)
           wait-on-timeout: 120
-          # Navegador a ser usado
           browser: chrome
         env:
-          # Passa as chaves do Supabase para o ambiente de teste
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}

@@ -37,7 +37,7 @@ export default function SideNav(props: any) {
           type="button"
           onClick={handleLogout}
           disabled={signingOut}
-          className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded bg-red-600 text-white hover:bg-red-700 disabled:opacity-60"
+          className="w-full flex h-12 items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[#ED3135] text-white hover:bg-red-700 disabled:opacity-60 cursor-pointer transition"
         >
           {/* ícone de logout (SVG inline) */}
           <svg

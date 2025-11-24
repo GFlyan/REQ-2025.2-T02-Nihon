@@ -1,6 +1,6 @@
 import StatusButton from "./StatusButton";
 import { EditProduct, RemoveProduct } from "./ProductButtons";
-import { fetchSupplier } from "@/lib/supabase/admin_product";
+import { fetchSupplierById } from "@/lib/supabase/admin/userClient-product";
 
 type Product = {
     title:string,
@@ -15,7 +15,7 @@ type ProductProps = {
 }
 
 export default async function Product({title, idfornecedor, status}: ProductProps) {
-    const supplier = await fetchSupplier(idfornecedor);
+    const supplier = await fetchSupplierById(idfornecedor);
     return(
         <div className="h-[120px] w-full flex justify-between bg-white border border-gray-300 rounded-3xl px-10 text-black">
             <div className="flex flex-col justify-center gap-2">

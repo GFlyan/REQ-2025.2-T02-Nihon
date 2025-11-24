@@ -1,7 +1,7 @@
 import SearchBar from "@/components/adminPages/SearchNihon";
 import {AddProduct} from "@/components/adminPages/ProductButtons";
 import Product from "@/components/adminPages/Product";
-import { fetchAllProducts, filterProductsByName } from "@/lib/supabase/admin_product";
+import { fetchAllProducts, filterProductsByName } from "@/lib/supabase/admin/userClient-product";
 
 export default async function Page({ searchParams }: { searchParams: { productName?: string }}) {
     const params = await (searchParams as any);

@@ -93,7 +93,7 @@ export default function BrandSection({ brands, productName, isOnBrandPage }: Bra
           `}
         >
           {displayedBrands.map((brand, index) => (
-            <Brand key={startIndex + index} name={brand.nome} productName={productName} isOnBrandPage={isOnBrandPage}/>
+            <Brand key={startIndex + index} idfornecedor={brand.idfornecedor} name={brand.nome} productName={productName} isOnBrandPage={isOnBrandPage}/>
           ))}
         </div>
           

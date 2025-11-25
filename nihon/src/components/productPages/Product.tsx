@@ -25,7 +25,7 @@ export default async function Product({ name, idproduto }: ProductProps) {
       xl:w-[350px]
       ">
       
-      <Link href='/produtosDescricao'>
+      <Link href={`/product?id=${idproduto}`}>
         
       <div className="
           h-[130px] w-[130px]

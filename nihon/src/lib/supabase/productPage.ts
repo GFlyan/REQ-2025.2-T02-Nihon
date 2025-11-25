@@ -1,6 +1,8 @@
-import { supabaseUser } from './client';
+import { supabaseUser, supabaseUserClientSide } from './client';
 
 const supabase = supabaseUser();
+const supaba_client_side = supabaseUserClientSide();
+
 
 export const fetchAllProducts = async () => {
     const {data: products, error} = await supabase.from('produto').select('*').eq('status', true);
@@ -49,3 +51,13 @@ export const fetchFirstImageOfProduct = async (idproduto: number) => {
   if (error) throw error;
   return data?.url || null;
 };
+
+export async function fetchBrandImage(idfornecedor: number) {
+    const { data, error } = await supaba_client_side
+      .from("imagem_fornecedor")
+      .select("url")
+      .eq("idfornecedor", idfornecedor)
+      .single();
+    if (error) throw error;
+    return data?.url || null;
+}

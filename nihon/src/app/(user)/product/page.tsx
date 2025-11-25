@@ -3,6 +3,7 @@ import Gallery from "./Gallery";
 import SimilarProducts from "./SimilarProducts";
 import { ProductInfo, ProductDescription } from "@/components/product/ProductInfo";
 import { BackButton } from "@/components/product/BackButton";
+import { redirect } from "next/navigation";
 
 type Product = {
   idproduto: number;
@@ -15,6 +16,11 @@ type Product = {
 
 
 export default async function ProductDescriptionPage({ searchParams }: { searchParams: { id: number }}) {
+
+  if (!searchParams?.id) { 
+    redirect("/");
+  }
+  
   const idproduto = Number(searchParams.id);
 
   let product: Product | null = null;

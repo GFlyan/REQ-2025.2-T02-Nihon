@@ -2,23 +2,29 @@
 
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { fetchCategories, fetchSuppliers } from "@/lib/supabase/admin/userClient-product";
+import { fetchSuppliers, fetchCategories } from '@/lib/supabase/admin/userClient-product';
 
 type Option = {
   value: number;
   label: string;
 };
 
+type Fornecedor = {
+  idfornecedor: number;
+  nome: string;
+  url: string;
+}
+
 export function SelectSupplier({ name, resetKey }: { name: string, resetKey: number }) {
   const [suppliers, setSuppliers] = useState<Option[]>([]);
   const [selected, setSelected] = useState<Option | null>(null);
-
+  
   useEffect(() => {
     async function load() {
       try {
-        const categories = await fetchSuppliers();
-
-        const mapped = categories.map((c: any) => ({
+        const data = await fetchSuppliers();
+        const categories = data;
+        const mapped = categories.map((c: Fornecedor) => ({
           value: c.idfornecedor,
           label: c.nome,
         }));
@@ -27,8 +33,7 @@ export function SelectSupplier({ name, resetKey }: { name: string, resetKey: num
       } catch (err) {
         console.error("Erro ao carregar categorias:", err);
       }
-    }
-
+    };
     load();
   }, []);
 

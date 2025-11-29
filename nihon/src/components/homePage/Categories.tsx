@@ -22,12 +22,15 @@ export function Categories() {
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.3, delay: index * 0.1 }}
                             >
-                              <p className="hover:text-[#E21414] cursor-pointer transition-colors text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px]">
-                                {category}
-                              </p>
-                              {index !== categories.length - 1 && (
-                                <span className="mx-4 text-gray-400">|</span>
-                              )}
+                              <Link href={`/${encodeURIComponent(categories[index])}/products`}>
+                                <p className="hover:text-[#E21414] cursor-pointer transition-colors text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px]">
+                                  {category}
+                                </p>
+                              </Link>
+                                {index !== categories.length - 1 && (
+                                  <span className="mx-4 text-gray-400">|</span>
+                                )}
+                              
                             </motion.div>
                           ))}
                       </div>

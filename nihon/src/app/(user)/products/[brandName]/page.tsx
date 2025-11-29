@@ -8,6 +8,8 @@ import BrandSection from "@/components/productPages/BrandSection";
 import ProductSection from "@/components/productPages/ProductSection";
 import Banner from "@/components/productPages/Banner"; 
 import ChangePage from "@/components/productPages/ChangePage";
+import { NotFound } from "@/components/productPages/NotFound";
+
 
 export default async function Page({ params, searchParams }: {params: {brandName: string}, searchParams: { productName?: string, page?: string} }) {
 
@@ -58,9 +60,7 @@ export default async function Page({ params, searchParams }: {params: {brandName
                 </div>
             </>) : 
             (<>
-                <h1 className="text-black text-center">Quantidade de Marcas: {amountBrands}</h1>
-                <h1 className="text-black text-center">Quantidade de Produtos: {amountProducts}</h1>
-                <h1 className="text-center text-black">Não encontramos nenhum produto!</h1>
+                <NotFound/>
             </>)}
         </div>
     );

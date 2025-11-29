@@ -8,11 +8,13 @@ import BrandSection from "@/components/productPages/BrandSection";
 import ProductSection from "@/components/productPages/ProductSection";
 import Banner from "@/components/productPages/Banner"; 
 import ChangePage from "@/components/productPages/ChangePage";
+import { NotFound } from "@/components/productPages/NotFound";
 
-export default async function Page({ params, searchParamsPromise }: { params: Promise<{ categoryName: string, brandName: string }>, searchParamsPromise: Promise<{ productName?: string, page?: string }> }) {
 
-  const resolvedParams = await params;
-  const resolvedSearchParams = await searchParamsPromise;
+export default async function Page({ params, searchParams }: { params: { categoryName: string, brandName: string }, searchParams: { productName?: string, page?: string } }) {
+
+  const resolvedParams = await (params as any);
+  const resolvedSearchParams = await (searchParams as any);
 
   const categoryName = decodeURIComponent(resolvedParams.categoryName);
   const brandName = decodeURIComponent(resolvedParams.brandName);
@@ -60,9 +62,7 @@ export default async function Page({ params, searchParamsPromise }: { params: Pr
                 </div>
             </>) : 
             (<>
-                <h1 className="text-black text-center">Quantidade de Marcas: {amountBrands}</h1>
-                <h1 className="text-black text-center">Quantidade de Produtos: {amountProducts}</h1>
-                <h1 className="text-center text-black">Não encontramos nenhum produto!</h1>
+                <NotFound/>
             </>)}
         </div>
     );

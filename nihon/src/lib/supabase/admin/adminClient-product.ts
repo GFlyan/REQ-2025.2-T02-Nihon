@@ -106,3 +106,4 @@ export const insertNewProduct = async (
     throw error;
   }
 };
+

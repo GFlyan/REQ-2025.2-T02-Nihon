@@ -24,6 +24,7 @@ export default async function ProductDescriptionPage({ searchParams }: { searchP
   
   const idproduto = Number(id);
 
+
   let product: Product | null = null;
   let supplierName: string | null = null;
   let error = "";
